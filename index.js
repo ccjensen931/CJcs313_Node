@@ -1,38 +1,23 @@
 const express = require('express');
+let app = express();
 const path = require('path');
-let url = require('url');
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
-express()
+app
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/TeamActivity09/form'))
-  .get('/math', (req, res) => { let result = calculate(req, res); res.render('pages/TeamActivity09/math', {result: result}); })
-  .get('/math_service', (req, res) => { let result = calculate(req, res); res.json({"Result: " : result}); })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-  function calculate(req, res) {
-    let query = url.parse(req.url, true).query;
-        
-    let lhs = parseFloat(query.lhs);
-    let operation = query.operation;
-    let rhs = parseFloat(query.rhs);
-    let result = 0;
+//Ponder 08
+app.get('/', (req, res) => res.send('Hello World!'));
+app.post('/', (req, res) => res.send('Got a POST request'));
+app.put('/', (req, res) => res.send('Got a PUT request at /user'));
+app.delete('/user', (req, res) => res.send('Got a DELETE request at /user'));
 
-    if (operation == '+') {
-        result = lhs + rhs;
-    } else if (operation == '-') {
-        result = lhs - rhs;
-    } else if (operation == '*') {
-        result = lhs * rhs;
-    } else if (operation == '/') {
-        result = lhs / rhs;
-    } else {
-        result = 0;
-    }
+//Ponder 09
 
-    console.log("Result " + result);
-    return result;
-    //res.render('pages/TeamActivity09/math', {result: result});
-  }
+
+//Team Activity 9
+app.use(require('./team_modules/TeamActivity09/route.js'));
+

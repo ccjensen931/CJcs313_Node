@@ -19,9 +19,9 @@
                 operation = "%2F";
             }
 
-            $.get("./math_service?lhs=" + lhs + "&operation=" + operation + "&rhs=" + rhs, function(result) {
-                //$("resultDiv").html(result);
-                document.getElementById("resultDiv").innerHTML = result;
+            $.get("./math_service?lhs=" + lhs + "&operation=" + operation + "&rhs=" + rhs, function(endResult) {
+                document.getElementById("resultDiv").innerHTML = "\nResult: " + endResult.result;
+
             });
         }
 </script>
