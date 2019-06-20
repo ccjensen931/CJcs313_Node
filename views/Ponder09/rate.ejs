@@ -14,9 +14,6 @@
     </div>
     <script>
         let result = <%- JSON.stringify(result) %>;
-
-        if (result === null)
-            result = 1,000,000.00;
             
         document.getElementById("result").innerHTML = result;
     </script>
