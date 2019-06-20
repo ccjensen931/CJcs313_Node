@@ -22,4 +22,4 @@ module.exports = function calculate(req, res) {
 
         console.log("Result " + result);
         return result;
-    }
+    };

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="./getRate" method="POST">
+        <div class="form-group">
+            <label for="Weight">Weight (ounces)</label>
+            <input type="text" name="Weight" id="Weight" class="form-control" placeholder="" aria-describedby="helpId">
+        </div>
+        <div class="form-check">
+            <div class="col">
+                <div class="row">
+                    <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="Type" id="Type" value="checkedValue">
+                    Letters(Stamped) - max 4ozs.
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="Type" id="Type" value="checkedValue">
+                    Letters(Metered) - max 4ozs.
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="Type" id="Type" value="checkedValue">
+                    Large Envelops(Flats)
+                    </label>
+                </div>
+                <div class="row">                    
+                    <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="Type" id="Type" value="checkedValue">
+                    First-Class Package Service—Retail
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>
