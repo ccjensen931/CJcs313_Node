@@ -5,15 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    
+    <script>
+        $.get("./getInbox", function(endResult) {
+            document.getElementById("result").innerHTML = endResult.messages;
+        });
+    </script>
+
 </head>
 <body>
     <% include ../partials/navbar %>
-    <div class="mt-5 d-flex">
-        <div class="ml-5 p-3">
-            <a href="composeMessage.php"><button type="button" class="btn btn-primary">Compose</button></a>
-            <ul class="list-group">
-            </ul>
-        </div>
+    <div>
+        <p style="display:inline">Something should be hrere:</p>
+        <p id="result" style="display:inline"></p>
+    </div>
 </body>
 </html>
+
