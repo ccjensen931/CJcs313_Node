@@ -24,6 +24,11 @@ app.delete('/user', (req, res) => res.send('Got a DELETE request at /user'));
 app.use(require('./ponder_modules/Ponder09/route.js'));
 
 /*****************************************
+ * Ponder 10
+*****************************************/
+app.use(require('./ponder_modules/Ponder10/route.js'));
+
+/*****************************************
  * Team Activity 09
 *****************************************/
 app.use(require('./team_modules/TeamActivity09/route.js'));
