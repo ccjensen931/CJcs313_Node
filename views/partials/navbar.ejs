@@ -6,8 +6,14 @@
             </p>
         </li>
         <li class="nav-item active">
-            <p class="nav-link">
-                Active route goes here
+            <p class="nav-link" id="active-path">
+                <script>
+                    let pathname = window.location.pathname;
+                    pathname = pathname.split(/\/\w{8}\//)[1];
+                    pathname = pathname.replace(/\w/, pathname.charAt(0).toUpperCase());
+
+                    document.getElementById("active-path").innerHTML = pathname;
+                </script>
             </p>
         </li>
     </ul>
