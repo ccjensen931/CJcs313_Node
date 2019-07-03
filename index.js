@@ -39,6 +39,11 @@ app.use(require('./team_modules/TeamActivity09/route.js'));
 app.use(require('./team_modules/TeamActivity10/route.js'));
 
 /*****************************************
+ * Team Activity 11
+*****************************************/
+app.use(require('./team_modules/TeamActivity11/route.js'));
+
+/*****************************************
  * Final Project 2
 *****************************************/
 app.use(require('./ponder_modules/Project2/route.js'));
