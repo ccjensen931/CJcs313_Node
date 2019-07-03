@@ -29,6 +29,11 @@ app.use(require('./ponder_modules/Ponder09/route.js'));
 app.use(require('./ponder_modules/Ponder10/route.js'));
 
 /*****************************************
+ * Ponder 11
+*****************************************/
+app.use(require('./ponder_modules/Ponder11/route.js'));
+
+/*****************************************
  * Team Activity 09
 *****************************************/
 app.use(require('./team_modules/TeamActivity09/route.js'));

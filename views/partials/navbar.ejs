@@ -1,8 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-            <p class="navbar-brand">
-                Username goes here
+            <p class="navbar-brand username">
+                <script>
+                    $(document).ready(function() {
+                        $.post("./getUsername", function(usernameResult) {
+                            $(".username").append(usernameResult.username[0].username);
+                    })});
+                </script>
             </p>
         </li>
         <li class="nav-item active">
@@ -27,7 +32,14 @@
                     <span class="navbar-toggler-icon"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <p class="dropdown-item">User's actual name goes here</p>
+                    <p class="dropdown-item realname">
+                        <script>
+                            $(document).ready(function() {
+                                $.post("./getRealname", function(realnameResult) {
+                                    $(".realname").append(realnameResult.realname[0].first_name + " " + realnameResult.realname[0].last_name);
+                            })});
+                        </script>
+                    </p>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="inbox">Inbox</a>
                     <a class="dropdown-item" href="outbox">Outbox</a>

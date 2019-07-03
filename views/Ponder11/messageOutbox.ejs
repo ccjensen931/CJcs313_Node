@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/header %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+   <script>
+        $(document).ready(function(){
+            $(".card").hide();
+        });
+
+        $.post("./getOutbox", function(outboxResult) {
+            outboxResult.messages.forEach(element => {
+                let listItem = '<li class="list-group-item"><a href="#" class="click" id='
+                    + element.message_id + '><p style="display:inline;">'
+                    + element.username + '</p>';
+                if (!element.message_read) {
+                    listItem += '<p style="color:red;display:inline;margin-left:15px">NEW</p><p style="display:inline;margin-left:85px">'
+                        + element.subject_text + '</p></a></li>';
+                } else {
+                    listItem += '<p style="display:inline;margin-left:85px">'
+                        + element.subject_text + '</p></a></li>';
+                }
+
+                $(".list-group").append(listItem);
+            });
+
+            $(".click").click(function() {
+                let messageId = $(this).attr("id");
+                $(".card").show();
+
+                $.get("./getMessage?id=" + messageId, function(messageResult) {
+                    let messageContents = '<div class="card-body"><p>' + messageResult.message[0].message_text + '</p><form action="#" method="get"><input type="hidden" name="DeleteMessage" id=' 
+                        + messageId + ' value='
+                        + messageId + ' placeholder=""><button type="submit" class="btn btn-danger" style="display:inline;">Delete</button></form></div>';
+
+                        $(".card-body").replaceWith(messageContents);
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <% include ../partials/navbar %>
+    <div class="mt-5 d-flex">
+        <div class="ml-5 p-3">
+            <!--<a href="composeMessage.php"><button type="button" class="btn btn-primary">Compose</button></a>-->
+            <ul class="list-group">
+            </ul>
+        </div>
+        <div class="mt-3 ml-5">
+            <div class="card">
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
