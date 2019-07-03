@@ -1,33 +1,51 @@
 $(document).ready(function(){
     $(".card").hide();
+    loadMessages();
 });
 
-$.post("./getInbox", function(inboxResult) {
-    inboxResult.messages.forEach(element => {
-        let listItem = '<li class="list-group-item"><a href="#" class="click" id='
-            + element.message_id + '><p style="display:inline;">'
-            + element.username + '</p>';
-        if (!element.message_read) {
-            listItem += '<p style="color:red;display:inline;margin-left:15px">NEW</p><p style="display:inline;margin-left:85px">'
-                + element.subject_text + '</p></a></li>';
-        } else {
-            listItem += '<p style="display:inline;margin-left:85px">'
-                + element.subject_text + '</p></a></li>';
-        }
+function loadMessages() {
+    $.get("./getInbox", function(inboxResult) {
+        let list = '<ul class="list-group">';
+        inboxResult.messages.forEach(element => {
+            let listItem = '<li class="list-group-item"><a href="#" class="click" id='
+                + element.message_id + '><p style="display:inline;">'
+                + element.username + '</p>';
+            if (!element.message_read) {
+                listItem += '<p style="color:red;display:inline;margin-left:15px">NEW</p><p style="display:inline;margin-left:85px">'
+                    + element.subject_text + '</p></a></li>';
+            } else {
+                listItem += '<p style="display:inline;margin-left:85px">'
+                    + element.subject_text + '</p></a></li>';
+            }
 
-        $(".list-group").append(listItem);
-    });
+            list += listItem;
+        });
+        list += '</ul>';
+        $(".list-group").replaceWith(list);
 
-    $(".click").click(function() {
-        let messageId = $(this).attr("id");
-        $(".card").show();
+        $(".click").click(function() {
+            let messageId = $(this).attr("id");
+            $(".card").show();
 
-        $.post("./getMessage", { messageId: messageId }, function(messageResult) {
-            let messageContents = '<div class="card-body"><p>' + messageResult.message[0].message_text + '</p><form action="#" method="get"><input type="hidden" name="DeleteMessage" id=' 
-                + messageId + ' value='
-                + messageId + ' placeholder=""><button type="submit" class="btn btn-danger" style="display:inline;">Delete</button></form></div>';
+            $.get("./getMessage?messageId=" + messageId, function(messageResult) {
+                let messageContents = '<div class="card-body"><p>' + messageResult.message[0].message_text + '</p><button type="button" class="btn btn-danger" id ="'
+                    + messageId + '" onclick="deleteMessage(this.id)" style="display:inline;">Delete</button></div>';
 
-                $(".card-body").replaceWith(messageContents);
+                    $(".card-body").replaceWith(messageContents);
+            });
         });
     });
-});
+}
+
+function deleteMessage(messageId) {
+    console.log("Delete " + messageId);
+    $.ajax({
+        url: "./deleteMessage",
+        type: "DELETE",
+        data: { messageId: messageId, table: "received" },
+        success: function(result) {
+            console.log(result);
+        },
+        complete: loadMessages()
+    });
+}
