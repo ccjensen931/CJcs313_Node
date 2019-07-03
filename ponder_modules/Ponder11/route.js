@@ -1,7 +1,9 @@
+// Libraries and premade imports
 const express = require('express');
 let parser = require('body-parser');
 let router = express.Router();
 
+// Custom imports for data retrieval
 let getMessages = require('./getMessages.js');
 let getUserData = require('./getUserData.js');
 
