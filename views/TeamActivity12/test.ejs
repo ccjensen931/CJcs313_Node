@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/header %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="form-group">
+        <label for="username"></label>
+        <input type="text" class="form-control" name="username" id="username" aria-describedby="helpId" placeholder="">
+        <label for="password"></label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="">
+    </div>
+    <button type="button" class="btn btn-primary" onclick="login(document.getElementById('username').value, document.getElementById('password').value)">Login</button>
+    <button type="button" class="btn btn-primary" onclick="logout()">Logout</button>
+    <button type="button" class="btn btn-primary" onclick="getServerTime()">Get Server Time</button>
+    <div id="time"></div>
+    <script src="/TeamActivity12/test.js"></script>
+</body>
+</html>

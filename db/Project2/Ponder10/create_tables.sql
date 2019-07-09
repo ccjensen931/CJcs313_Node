@@ -38,39 +38,11 @@ CREATE TABLE messages
     subject_text                VARCHAR(200)        CONSTRAINT nn_messages_3 NOT NULL,
     message_text                VARCHAR(1000)       CONSTRAINT nn_messages_4 NOT NULL,
     message_read                BOOLEAN             CONSTRAINT nn_messages_5 NOT NULL,
+    sender_delete               BOOLEAN             CONSTRAINT nn_messages_6 NOT NULL,
+    recipient_delete            BOOLEAN             CONSTRAINT nn_messages_7 NOT NULL,
     CONSTRAINT pk_messages PRIMARY KEY(message_id),
     CONSTRAINT fk_messages_recipient FOREIGN KEY(recipient_id) REFERENCES users(user_id),
     CONSTRAINT fk_messages_sender FOREIGN KEY(sender_id) REFERENCES users(user_id)
 );
 
 CREATE SEQUENCE message_s1 START WITH 1;
-
---------------------------------------------------------------------------------
-
-CREATE TABLE message_sent
-(
-    message_sent_id             INTEGER,
-    message_id                  INTEGER             CONSTRAINT nn_message_sent_1 NOT NULL,
-    sender_id                   INTEGER             CONSTRAINT nn_message_sent_2 NOT NULL,
-    CONSTRAINT pk_message_sent PRIMARY KEY(message_sent_id),    
-    CONSTRAINT fk_message_sent_sender FOREIGN KEY(sender_id) REFERENCES users(user_id),
-    CONSTRAINT fk_message_sent_message FOREIGN KEY(message_id) REFERENCES messages(message_id)
-);
-
-CREATE SEQUENCE message_send_s1 START WITH 1;
-CREATE UNIQUE INDEX message_sent_idx1 ON message_sent(message_id, sender_id);
-
---------------------------------------------------------------------------------
-
-CREATE TABLE message_received
-(
-    message_received_id         INTEGER,
-    message_id                  INTEGER             CONSTRAINT nn_message_received_1 NOT NULL,
-    recipient_id                INTEGER             CONSTRAINT nn_message_received_2 NOT NULL,
-    CONSTRAINT pk_message_received PRIMARY KEY(message_received_id),    
-    CONSTRAINT fk_message_sent_recipient FOREIGN KEY(recipient_id) REFERENCES users(user_id),
-    CONSTRAINT fk_message_sent_message FOREIGN KEY(message_id) REFERENCES messages(message_id)
-);
-
-CREATE SEQUENCE message_receive_s1 START WITH 1;
-CREATE UNIQUE INDEX message_received_idx1 ON message_received(message_id, recipient_id);

@@ -3,9 +3,16 @@ const express = require('express');
 let app = express();
 const path = require('path');
 const PORT = process.env.PORT || 3000;
+const session = require('express-session');
 
 app
   .use(express.static(path.join(__dirname, 'public')))
+  .use(session({
+    key: 'user_sid',
+    secret: 'your_mom',
+    resave: false,
+    saveUninitialized: true
+  }))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
@@ -34,6 +41,11 @@ app.use(require('./ponder_modules/Ponder10/route.js'));
 app.use(require('./ponder_modules/Ponder11/route.js'));
 
 /*****************************************
+ * Ponder 12
+*****************************************/
+app.use(require('./ponder_modules/Ponder12/route.js'));
+
+/*****************************************
  * Team Activity 09
 *****************************************/
 app.use(require('./team_modules/TeamActivity09/route.js'));
@@ -49,6 +61,10 @@ app.use(require('./team_modules/TeamActivity10/route.js'));
 app.use(require('./team_modules/TeamActivity11/route.js'));
 
 /*****************************************
- * Final Project 2
+ * Team Activity 12
 *****************************************/
-app.use(require('./ponder_modules/Project2/route.js'));
+app.use((req, res, next) => {
+  console.log("Received a request for: " + req.url);
+  next();
+})
+app.use(require('./team_modules/TeamActivity12/route.js'));
