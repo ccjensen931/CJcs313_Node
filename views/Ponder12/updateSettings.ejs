@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/header %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/Ponder12/updateSettings.js" defer></script>
+</head>
+<body>
+    <% include ../partials/navbar %>
+    <div class="d-flex justify-content-center align-items-center">
+        <h4>Account Settings</h4>
+    </div>
+    <div class="mt-5 ml-5 d-flex justify-content-center align-items-center">
+        <form>
+            <div class="accordion" id="accordionSettings">
+                <div class="card">
+                    <div class="card-header" id="headingPassword">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#password" aria-expanded="false" aria-controls="password">
+                                Password
+                            </button>
+                        </h2>
+                    </div>
+                    <!-- Show if password Error -->
+                <div id="password" class="collapse" aria-labelledby="headingPassword">
+                        <div class="card-body">
+                            <label for="oldPassword">Old Password</label>
+                            <p class="passwordError" style="color:red"></p>
+                            <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="">
+                            <label for="confirmNewPassword">Confirm New Password</label>
+                            <input type="password" class="form-control" name="confirmNewPassword" id="confirmNewPassword" placeholder="" onkeyup="">
+                            <p class="passwordCheck" style="color:red"><span id="PasswordCheck"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingEmail">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#email" aria-expanded="false" aria-controls="email">
+                                Email
+                            </button>
+                        </h2>
+                    </div>
+                    <!-- Show if email error -->
+                    <div id="email" class="collapse" aria-labelledby="headingEmail">
+                        <div class="card-body">
+                            <label for="oldEmail">Current Email</label>
+                            <p class="oldEmail" id="oldEmail" style="padding-left:5em">Get Current Email Here!</p>
+                            <label for="newEmail">New Email</label>
+                            <input type="text" class="form-control" name="newEmail" id="newEmail" aria-describedby="helpId" placeholder="">
+                            <p class="emailError" style="color:red"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingName">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#name" aria-expanded="false" aria-controls="name">
+                                Name
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="name" class="collapse" aria-labelledby="headingName">
+                        <div class="card-body">
+                            <label for="firstName">First Name</label>
+                            <input type="text" class="form-control" name="firstName" id="firstName" aria-describedby="helpId" placeholder="Get First Name Here!">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" class="form-control" name="lastName" id="lastName" aria-describedby="helpId" placeholder="Get Last Name Here!">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+    
+    <!-- <div class="d-flex justify-content-center align-items-center">
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAccountModal">
+            Delete Account
+        </button>
+        <div class="modal fade" id="deleteAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Permanently Delete Account</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>You are about to delete your account. You will lose all your messages and contacts. This cannot be undone, are you sure you wish to proceed?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                            <form action="deleteAccount.php" method="post">
+                                <input type="hidden" name="Delete" id="<?php echo $userID ?>" value="<?php echo $userID ?>">
+                                <button type="submit" class="btn btn-primary">Confirm</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</body>
+</html>

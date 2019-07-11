@@ -2,7 +2,6 @@ const pool = require('../../general_modules/dbConnect.js');
 
 module.exports = {
     getAvailableContacts: function(req, res) {
-        console.log("Getting available contacts");
         const query = {
             name: 'get-available-contacts',
             text: 'SELECT DISTINCT u.username FROM users u WHERE u.user_id NOT IN (SELECT user_id FROM users JOIN contacts c ON u.user_id = c.owner_contact_id WHERE c.owner_id = $1) AND u.user_id != $1;',
@@ -17,8 +16,8 @@ module.exports = {
         }   
 
             // Log this to the console for debugging purposes.
-            console.log("Back from DB with result:");
-            console.log(result.rows);
+            // console.log("Back from DB with result:");
+            // console.log(result.rows);
 
             res.json({contacts: result.rows});
         });
@@ -67,8 +66,8 @@ module.exports = {
         });
     },
     deleteContact: function(req, res) {
-        console.log("Delete Contact!");
-        console.log(req.body);
+        // console.log("Delete Contact!");
+        // console.log(req.body);
 
         const query = {
             name: 'delete-contact',

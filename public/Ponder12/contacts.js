@@ -19,9 +19,9 @@ function loadContacts() {
     });
 }
 
-function loadAvailable(inputField) {
+function loadAvailable() {
     $.get('./getAvailableContacts', function(contactResults) {
-        let list = '<datalist id="search-results">';
+        let list = '<datalist class="searchList" id="search-results">';
         contactResults.contacts.forEach(contact => {
             let listItem = '<option lable="option1" value="' + contact.username + '">';
 

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/Ponder12/contacts.js" defer></script>
 </head>
 <body>
     <% include ../partials/navbar %>
@@ -12,9 +13,8 @@
         <div class="container align-center col-4">
             <div class="form-group">
                 <label for="Contact">Add Contact</label>
-                <input autocomplete="off" type="text" class="form-control" name="Contact" id="Contact" aria-describedby="helpId" placeholder="Username" onkeyup="loadAvailable(this)" list="search-results">
+                <input autocomplete="off" type="text" class="form-control" name="Contact" id="Contact" aria-describedby="helpId" placeholder="Username" onkeyup="loadAvailable()" list="search-results">
                 <datalist class="searchList" id="search-results">
-
                 </datalist>
                 <button type="button" class="btn btn-primary" onclick="addContact(document.getElementById('Contact').value)">Add</button>
             </div>
@@ -24,6 +24,5 @@
             </ul>
         </div>
     </div>
-    <script src="/Ponder12/contacts.js"></script>
 </body>
 </html>
