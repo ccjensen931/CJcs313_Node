@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/header %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <% include ../partials/navbar %>
+    <div class="container justify-content-center align-items-center">
+        <div class="col-8">
+            <div class="form-group">
+                <div class="message_send_error"></div>
+                <label for="Receiver">To:</label>
+                <input autocomplete="off" type="text" class="form-control" name="contact" id="contact" aria-describedby="helpId" placeholder="Username" onkeyup="loadCurrentContacts(this)" list="search-results">
+                <datalist class="searchList" id="search-results">
+                </datalist>
+                <label for="Subject">Subject:</label>
+                <input type="text" class="form-control" name="subject" id="subject" aria-describedby="helpId" placeholder="Subject" required>
+                <textarea class="form-control" name="content" id="content" rows="5" required></textarea>
+                <button type="button" class="btn btn-primary" onclick="sendMessage(document.getElementById('contact').value, document.getElementById('subject').value, document.getElementById('content').value)">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="/Ponder12/composeMessage.js"></script>
+</body>
+</html>

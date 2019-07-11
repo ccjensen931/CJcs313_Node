@@ -16,17 +16,18 @@ module.exports = {
         }   
 
             // Log this to the console for debugging purposes.
-            console.log("Back from DB with result:");
-            console.log(result.rows);
+            // console.log("Back from DB with result:");
+            // console.log(result.rows);
 
             let loginSuccessful = false;
-            if (result.rows[0].user_password == req.body.password) {
+            if (result.rows[0] && result.rows[0].user_password == req.body.password) {
                 loginSuccessful = true;
                 req.session.user_id = result.rows[0].user_id;
             }
 
             res.json({success: loginSuccessful});
-    });},
+        });
+    },
     logout: function(req, res) {
         let sessionDestroyed = false;
         if (req.session.user_id) {

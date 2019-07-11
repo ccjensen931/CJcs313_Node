@@ -33,27 +33,25 @@ function loadAvailable(inputField) {
 }
 
 function addContact(username) {
-    console.log("Add " + username);
     $.ajax({
         url: "./addContact",
         type: "POST",
         data: { username: username },
         success: function(result) {
-
-        },
-        complete: loadContacts()
+            // console.log(result);
+            loadContacts();
+        }
     });
 }
 
 function deleteContact(contactId) {
-    console.log("Delete " + contactId);
     $.ajax({
         url: "./deleteContact",
         type: "DELETE",
-        data: { contactId: contactId, user_id: '1' },
+        data: { contactId: contactId },
         success: function(result) {
-
-        },
-        complete: loadContacts()
+            // console.log(result);
+            loadContacts();
+        }
     });
 }

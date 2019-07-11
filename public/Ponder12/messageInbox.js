@@ -34,20 +34,34 @@ function loadMessages() {
                     + messageId + '" onclick="deleteMessage(this.id)" style="display:inline;">Delete</button></div>';
 
                     $(".card-body").replaceWith(messageContents);
+
+                    updateMessageRead(messageId);
             });
         });
     });
 }
 
 function deleteMessage(messageId) {
-    console.log("Delete " + messageId);
     $.ajax({
         url: "./deleteMessage",
         type: "DELETE",
-        data: { messageId: messageId, table: "received" },
+        data: { messageId: messageId, sender: false },
         success: function(result) {
-            console.log(result);
-        },
-        complete: loadMessages()
+            // console.log(result);
+            $(".card").hide();
+            loadMessages();
+        }
+    });
+}
+
+function updateMessageRead(messageId) {
+    $.ajax({
+        url: "./updateMessageRead",
+        type: "POST",
+        data: { messageId: messageId },
+        success: function(result) {
+            // console.log(result);
+            loadMessages();
+        }
     });
 }

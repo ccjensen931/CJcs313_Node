@@ -10,14 +10,8 @@ function loadMessages() {
             if (!element.sender_delete) {
                 let listItem = '<li class="list-group-item"><a href="#" class="click" id='
                     + element.message_id + '><p style="display:inline;">'
-                    + element.username + '</p>';
-                if (!element.message_read) {
-                    listItem += '<p style="color:red;display:inline;margin-left:15px">NEW</p><p style="display:inline;margin-left:85px">'
-                        + element.subject_text + '</p></a></li>';
-                } else {
-                    listItem += '<p style="display:inline;margin-left:85px">'
-                        + element.subject_text + '</p></a></li>';
-                }
+                    + element.username + '</p><p style="display:inline;margin-left:85px">'
+                    + element.subject_text + '</p></a></li>';
                 
                 list += listItem;    
             }
@@ -40,14 +34,14 @@ function loadMessages() {
 }
 
 function deleteMessage(messageId) {
-    console.log("Delete " + messageId);
     $.ajax({
         url: "./deleteMessage",
         type: "DELETE",
-        data: { messageId: messageId, table: "sent" },
+        data: { messageId: messageId, sender: true },
         success: function(result) {
-            console.log(result);
-        },
-        complete: loadMessages()
+            // console.log(result);
+            $(".card").hide();
+            loadMessages();
+        }
     });
 }
