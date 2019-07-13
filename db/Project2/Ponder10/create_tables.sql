@@ -6,6 +6,7 @@ CREATE TABLE users
     email                       VARCHAR(100)        CONSTRAINT nn_users_3 NOT NULL,
     first_name                  VARCHAR(50)         CONSTRAINT nn_users_4 NOT NULL,
     last_name                   VARCHAR(50)         CONSTRAINT nn_users_5 NOT NULL,
+    delete_account              BOOLEAN             CONSTRAINT nn_users_6 NOT NULL,
     CONSTRAINT pk_users PRIMARY KEY(user_id)
 );
 

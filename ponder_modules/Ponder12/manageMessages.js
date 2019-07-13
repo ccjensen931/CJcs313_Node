@@ -132,6 +132,7 @@ module.exports = {
                 // Log this to the console for debugging purposes.
                 // console.log("Back from DB with result:");
                 // console.log(result);
+                
                 res.json({success: true});
             });
         } else if (req.body.sender == "false") {
@@ -147,6 +148,7 @@ module.exports = {
                 // Log this to the console for debugging purposes.
                 // console.log("Back from DB with result:");
                 // console.log(result);
+
                 res.json({success: true});
             });
         }
@@ -170,6 +172,7 @@ module.exports = {
             // Log this to the console for debugging purposes.
             // console.log("Back from DB with result:");
             // console.log(result);
+
             res.json({success: updateSuccess});
         });
     }

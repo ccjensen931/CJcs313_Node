@@ -32,7 +32,7 @@
                             <label for="newPassword">New Password</label>
                             <input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="">
                             <label for="confirmNewPassword">Confirm New Password</label>
-                            <input type="password" class="form-control" name="confirmNewPassword" id="confirmNewPassword" placeholder="" onkeyup="">
+                            <input type="password" class="form-control" name="confirmNewPassword" id="confirmNewPassword" placeholder="" onkeyup="checkPasswords(document.getElementById('newPassword').value, this.value)">
                             <p class="passwordCheck" style="color:red"><span id="PasswordCheck"></span></p>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                     <div id="email" class="collapse" aria-labelledby="headingEmail">
                         <div class="card-body">
                             <label for="oldEmail">Current Email</label>
-                            <p class="oldEmail" id="oldEmail" style="padding-left:5em">Get Current Email Here!</p>
+                            <p class="oldEmail" id="oldEmail" style="padding-left:5em"></p>
                             <label for="newEmail">New Email</label>
                             <input type="text" class="form-control" name="newEmail" id="newEmail" aria-describedby="helpId" placeholder="">
                             <p class="emailError" style="color:red"></p>
@@ -67,18 +67,17 @@
                     <div id="name" class="collapse" aria-labelledby="headingName">
                         <div class="card-body">
                             <label for="firstName">First Name</label>
-                            <input type="text" class="form-control" name="firstName" id="firstName" aria-describedby="helpId" placeholder="Get First Name Here!">
+                            <input type="text" class="form-control firstName" name="firstName" id="firstName" aria-describedby="helpId" placeholder="Get First Name Here!">
                             <label for="lastName">Last Name</label>
                             <input type="text" class="form-control" name="lastName" id="lastName" aria-describedby="helpId" placeholder="Get Last Name Here!">
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary mt-2" onclick="updateSettings()">Save</button>
         </form>
     </div>
-    
-    <!-- <div class="d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center align-items-center">
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAccountModal">
             Delete Account
         </button>
@@ -96,15 +95,14 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                            <form action="deleteAccount.php" method="post">
-                                <input type="hidden" name="Delete" id="<?php echo $userID ?>" value="<?php echo $userID ?>">
-                                <button type="submit" class="btn btn-primary">Confirm</button>
+                            <form>
+                                <button type="submit" class="btn btn-primary" onclick="deleteAccount()">Confirm</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 </body>
 </html>

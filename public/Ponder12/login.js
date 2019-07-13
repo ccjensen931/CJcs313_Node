@@ -1,3 +1,9 @@
+$(document).ready(function() {
+    $("form").submit(function(e) {
+        e.preventDefault();
+    });
+});
+
 function login(username, password) {
     $.ajax({
         url: "./login",
