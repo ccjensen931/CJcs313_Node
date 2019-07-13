@@ -4,7 +4,7 @@ module.exports = {
     getAvailableContacts: function(req, res) {
         const query = {
             name: 'get-available-contacts',
-            text: 'SELECT DISTINCT u.username FROM users u WHERE u.user_id NOT IN (SELECT user_id FROM users JOIN contacts c ON u.user_id = c.owner_contact_id WHERE c.owner_id = $1) AND u.user_id != $1;',
+            text: 'SELECT DISTINCT u.username FROM users u WHERE u.user_id NOT IN (SELECT user_id FROM users JOIN contacts c ON u.user_id = c.owner_contact_id WHERE c.owner_id = $1) AND u.user_id != $1 AND u.delete_account = FALSE;',
             values: [req.session.user_id]
         };
 

@@ -7,7 +7,7 @@ WHERE u.user_id NOT IN
 	FROM users JOIN contacts c
 		ON u.user_id = c.owner_contact_id
 	WHERE c.owner_id = 1)
-	AND u.user_id != 1;
+	AND u.user_id != 1 AND u.delete_account = FALSE;
 
 --------------------------------------------------------------------------------
 
