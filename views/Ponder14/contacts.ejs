@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/header %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/Ponder14/contacts.js" defer></script>
+</head>
+<body>
+    <% include ../partials/navbar %>
+    <div class="mt-5 d-flex">
+        <div class="container align-center col-4">
+            <div class="form-group">
+                <label for="Contact">Add Contact</label>
+                <input autocomplete="off" type="text" class="form-control" name="Contact" id="Contact" aria-describedby="helpId" placeholder="Username" onkeyup="loadAvailable()" list="search-results">
+                <datalist class="searchList" id="search-results">
+                </datalist>
+                <button type="button" class="btn btn-primary" onclick="addContact()">Add</button>
+            </div>
+        </div>
+        <div class="container align-center col-8">
+            <ul class="list-group ml-5">
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -55,3 +55,8 @@ UPDATE users SET last_name = $1 WHERE user_id = $2;
 
 -- Delete account
 UPDATE users SET delete_account = TRUE WHERE user_id = $1;
+
+--------------------------------------------------------------------------------
+
+-- Create Account
+INSERT INTO users VALUES (nextval('users_s1'), $1, $2, $3, $4, $5, FALSE);

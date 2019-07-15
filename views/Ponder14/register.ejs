@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/header %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/Ponder14/register.js" defer></script>
+</head>
+<body>
+    <div class="mt-5 d-flex justify-content-center align-items-center">
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" aria-describedby="helpId" placeholder="Username" onblur="checkUsername()" required>
+                    <p class="usernameError" style="color:red"></p>
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="" required>
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="" onkeyup="checkPasswords()" required>
+                    <p id="passwordError" style="color:red"></p>
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="" onblur="checkEmail()" required>
+                    <p class="emailError" style="color:red"></p>
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName" id="firstName" aria-describedby="helpId" placeholder="" required>
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" id="lastName" aria-describedby="helpId" placeholder="" required>
+                    <button type="submit" class="btn btn-primary" onclick="createAccount()">Submit</button>
+                    <p class="registrationError" style="color:red"></p>
+                </div>
+            </form>
+        </div>
+</body>
+</html>
